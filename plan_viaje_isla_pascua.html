@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rapa Nui — Club de Cine · 5° Aniversario</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --stone: #2a2420;
+    --obsidian: #1a1614;
+    --terra: #8b4a2a;
+    --coral: #c96b3f;
+    --gold: #d4a853;
+    --sand: #e8d5b0;
+    --sky: #7eb8c9;
+    --sea: #3d7a8a;
+    --moss: #5a7a52;
+    --cream: #f5ede0;
+    --white: #fdfaf6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--obsidian);
+    color: var(--cream);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(139,74,42,0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(61,122,138,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(212,168,83,0.08) 0%, transparent 70%),
+      linear-gradient(180deg, #0e0b09 0%, #1a1614 50%, #0d1416 100%);
+  }
+
+  /* Moai silhouettes */
+  .moai-silhouette {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.18;
+    color: var(--terra);
+    filter: drop-shadow(0 0 18px rgba(139,74,42,0.3));
+  }
+  .moai-left  { left: 1%;  width: 130px; }
+  .moai-right { right: 3%; width: 100px; transform: scaleX(-1); }
+  .moai-back  { left: 50%; transform: translateX(-50%); width: 75px; bottom: 5px; opacity: 0.07; }
+
+  @media (max-width: 480px) {
+    .moai-left  { width: 75px; }
+    .moai-right { width: 58px; }
+    .moai-back  { display: none; }
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(212,168,83,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 8%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 5%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 12%, rgba(212,168,83,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 80% 6%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 20%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 30%, rgba(255,255,255,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 55% 25%, rgba(212,168,83,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 75% 18%, rgba(255,255,255,0.45) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 35%, rgba(255,255,255,0.2) 0%, transparent 100%);
+  }
+
+  .hero-content { position: relative; z-index: 2; }
+
+  .club-badge {
+    display: inline-block;
+    border: 1px solid rgba(212,168,83,0.4);
+    padding: 0.4rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2rem;
+    border-radius: 2px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 300;
+    line-height: 0.9;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero h1 span {
+    display: block;
+    color: var(--gold);
+    font-style: italic;
+    font-size: 0.6em;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(232,213,176,0.5);
+    margin: 1.5rem 0 3rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    text-align: center;
+  }
+
+  .meta-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--sand);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(232,213,176,0.3);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(232,213,176,0.3), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* CLIMA BANNER */
+  .clima-section {
+    background: linear-gradient(135deg, rgba(61,122,138,0.15) 0%, rgba(26,22,20,0) 100%);
+    border-top: 1px solid rgba(126,184,201,0.2);
+    border-bottom: 1px solid rgba(126,184,201,0.2);
+    padding: 2.5rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sky);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-tag::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(126,184,201,0.2);
+  }
+
+  .clima-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+
+  .clima-card {
+    background: rgba(126,184,201,0.07);
+    border: 1px solid rgba(126,184,201,0.15);
+    border-radius: 6px;
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+
+  .clima-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
+  .clima-card-label { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sky); opacity: 0.7; }
+  .clima-card-value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--sand); margin-top: 0.2rem; }
+  .clima-card-sub { font-size: 0.7rem; color: rgba(232,213,176,0.5); margin-top: 0.2rem; }
+
+  .clima-tip {
+    margin-top: 1.5rem;
+    background: rgba(212,168,83,0.08);
+    border-left: 3px solid var(--gold);
+    padding: 1rem 1.2rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.82rem;
+    color: var(--sand);
+    line-height: 1.6;
+  }
+
+  /* NAVIGATION TABS */
+  .nav-section {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(18,14,12,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,168,83,0.15);
+    padding: 0 2rem;
+  }
+
+  .nav-tabs {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .nav-tabs::-webkit-scrollbar { display: none; }
+
+  .nav-tab {
+    flex-shrink: 0;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(232,213,176,0.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .nav-tab:hover { color: var(--sand); }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* DAY PANELS */
+  .days-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  .day-panel { display: none; }
+  .day-panel.active { display: block; animation: fadeIn 0.4s ease; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .day-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .day-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    color: rgba(212,168,83,0.15);
+    line-height: 1;
+    position: relative;
+  }
+
+  .day-info { flex: 1; min-width: 200px; }
+
+  .day-date {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 0.4rem;
+  }
+
+  .day-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .day-subtitle {
+    font-size: 0.8rem;
+    color: rgba(232,213,176,0.5);
+    margin-top: 0.3rem;
+  }
+
+  .day-sun {
+    text-align: right;
+    background: rgba(212,168,83,0.08);
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 6px;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .sun-item { font-size: 0.72rem; color: var(--sand); }
+  .sun-item + .sun-item { margin-top: 0.3rem; }
+  .sun-emoji { margin-right: 0.4rem; }
+
+  /* TIMELINE */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--coral), rgba(201,107,63,0.1));
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.8rem;
+    position: relative;
+  }
+
+  .tl-dot {
+    flex-shrink: 0;
+    width: 57px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .tl-dot-circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--stone);
+    border: 2px solid var(--coral);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .tl-dot-circle.gold { border-color: var(--gold); background: rgba(212,168,83,0.2); }
+  .tl-dot-circle.sea { border-color: var(--sky); }
+  .tl-dot-circle.moss { border-color: #7aad70; }
+
+  .tl-time {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    color: rgba(232,213,176,0.3);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .tl-card {
+    flex: 1;
+    background: rgba(42,36,32,0.5);
+    border: 1px solid rgba(139,74,42,0.2);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .tl-card:hover { border-color: rgba(201,107,63,0.4); }
+  .tl-card.highlight { border-color: rgba(212,168,83,0.35); background: rgba(212,168,83,0.05); }
+  .tl-card.sea-card { border-color: rgba(126,184,201,0.25); background: rgba(61,122,138,0.08); }
+
+  .tl-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tl-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+  }
+
+  .tl-tag {
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 3px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .tag-arq { background: rgba(139,74,42,0.3); color: #e8956a; border: 1px solid rgba(139,74,42,0.4); }
+  .tag-vista { background: rgba(212,168,83,0.15); color: var(--gold); border: 1px solid rgba(212,168,83,0.3); }
+  .tag-agua { background: rgba(61,122,138,0.25); color: var(--sky); border: 1px solid rgba(61,122,138,0.4); }
+  .tag-trek { background: rgba(90,122,82,0.25); color: #9fd494; border: 1px solid rgba(90,122,82,0.4); }
+  .tag-food { background: rgba(80,60,100,0.3); color: #c8a8e0; border: 1px solid rgba(100,80,130,0.4); }
+  .tag-vuelo { background: rgba(40,40,70,0.4); color: #8899cc; border: 1px solid rgba(70,80,140,0.3); }
+  .tag-libre { background: rgba(30,50,40,0.4); color: #88bb99; border: 1px solid rgba(50,90,60,0.3); }
+
+  .tl-card-desc {
+    font-size: 0.82rem;
+    color: rgba(232,213,176,0.65);
+    line-height: 1.6;
+  }
+
+  .tl-card-tip {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--gold);
+    opacity: 0.8;
+  }
+
+  .tl-card-tip::before { content: '★ '; }
+
+  /* RESTAURANTS SECTION */
+  .restaurants-section {
+    background: rgba(42,36,32,0.3);
+    border-top: 1px solid rgba(139,74,42,0.2);
+    padding: 3rem 2rem;
+  }
+
+  .restaurants-inner { max-width: 900px; margin: 0 auto; }
+
+  .rest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .rest-card {
+    background: rgba(42,36,32,0.6);
+    border: 1px solid rgba(139,74,42,0.2);
+    border-radius: 8px;
+    padding: 1.4rem;
+    transition: border-color 0.3s;
+  }
+
+  .rest-card:hover { border-color: rgba(201,107,63,0.4); }
+  .rest-card.vegan-friendly { border-color: rgba(90,122,82,0.4); background: rgba(90,122,82,0.06); }
+
+  .rest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+
+  .rest-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.7rem; }
+
+  .rest-tag {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+  .rt-vegan { background: rgba(90,122,82,0.3); color: #9fd494; border: 1px solid rgba(90,122,82,0.4); }
+  .rt-vista { background: rgba(61,122,138,0.2); color: var(--sky); border: 1px solid rgba(61,122,138,0.3); }
+  .rt-show { background: rgba(139,74,42,0.3); color: #e8956a; border: 1px solid rgba(139,74,42,0.4); }
+  .rt-sushi { background: rgba(80,60,100,0.3); color: #c8a8e0; border: 1px solid rgba(100,80,130,0.3); }
+  .rt-precio { background: rgba(50,50,50,0.4); color: rgba(232,213,176,0.6); border: 1px solid rgba(100,100,100,0.2); }
+
+  .rest-desc {
+    font-size: 0.78rem;
+    color: rgba(232,213,176,0.6);
+    line-height: 1.6;
+  }
+
+  .rest-vegan-note {
+    margin-top: 0.7rem;
+    font-size: 0.74rem;
+    color: #9fd494;
+    border-top: 1px solid rgba(90,122,82,0.2);
+    padding-top: 0.6rem;
+  }
+
+  .rest-vegan-note::before { content: '🌱 '; }
+
+  /* TIPS SECTION */
+  .tips-section {
+    padding: 3rem 2rem;
+    background: linear-gradient(180deg, rgba(212,168,83,0.04) 0%, transparent 100%);
+  }
+
+  .tips-inner { max-width: 900px; margin: 0 auto; }
+
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .tip-card {
+    background: rgba(42,36,32,0.4);
+    border: 1px solid rgba(212,168,83,0.15);
+    border-radius: 8px;
+    padding: 1.2rem;
+  }
+
+  .tip-icon { font-size: 1.4rem; margin-bottom: 0.6rem; display: block; }
+  .tip-title { font-size: 0.75rem; font-weight: 600; color: var(--gold); margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+  .tip-text { font-size: 0.76rem; color: rgba(232,213,176,0.6); line-height: 1.6; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid rgba(42,36,32,0.8);
+    font-size: 0.7rem;
+    color: rgba(232,213,176,0.2);
+    letter-spacing: 0.15em;
+  }
+
+  /* ===== RESPONSIVE MÓVIL ===== */
+  @media (max-width: 768px) {
+    /* Hero */
+    .hero { padding: 1.5rem 1rem; min-height: 100svh; }
+    .hero h1 { font-size: clamp(2.4rem, 11vw, 4.5rem); }
+    .hero-meta { gap: 1.2rem; }
+    .meta-value { font-size: 0.95rem; }
+    .club-badge { font-size: 0.62rem; padding: 0.35rem 0.9rem; }
+
+    /* Clima */
+    .clima-section { padding: 2rem 1rem; }
+    .clima-grid { grid-template-columns: repeat(2, 1fr); gap: 0.7rem; }
+    .clima-card { padding: 1rem 0.7rem; }
+    .clima-card-value { font-size: 1.1rem; }
+
+    /* Nav tabs */
+    .nav-section { padding: 0 0.5rem; }
+    .nav-tab { padding: 0.85rem 0.75rem; font-size: 0.6rem; letter-spacing: 0.08em; }
+
+    /* Days */
+    .days-container { padding: 2rem 1rem; }
+    .day-header { flex-direction: column; gap: 0.8rem; }
+    .day-number { font-size: 3rem; }
+    .day-title { font-size: 1.6rem; }
+    .day-sun { text-align: left; }
+
+    /* Timeline */
+    .timeline::before { left: 20px; }
+    .tl-item { gap: 0.9rem; margin-bottom: 1.4rem; }
+    .tl-dot { width: 42px; }
+    .tl-dot-circle { width: 13px; height: 13px; }
+    .tl-time { font-size: 0.55rem; }
+    .tl-card { padding: 1rem 1rem; }
+    .tl-card-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+    .tl-card-title { font-size: 1rem; }
+    .tl-card-desc { font-size: 0.79rem; }
+    .tl-tag { align-self: flex-start; }
+
+    /* Restaurantes */
+    .rest-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .restaurants-section { padding: 2rem 1rem; }
+
+    /* Tips */
+    .tips-section { padding: 2rem 1rem; }
+    .tips-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+    .tip-card { padding: 1rem; }
+  }
+
+  @media (max-width: 420px) {
+    .hero h1 { font-size: 2.2rem; }
+    .hero-meta { flex-direction: column; gap: 0.8rem; }
+    .clima-grid { grid-template-columns: 1fr 1fr; }
+    .nav-tab { padding: 0.8rem 0.6rem; font-size: 0.56rem; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .day-title { font-size: 1.4rem; }
+    .tl-card-title { font-size: 0.95rem; }
+    .rest-name { font-size: 1.05rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars"></div>
+
+  <!-- Moai SVGs: realistic silhouette -->
+  <!-- LEFT moai (tall, prominent) -->
+  <svg class="moai-silhouette moai-left" viewBox="0 0 110 340" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <!-- pukao / topknot hat -->
+    <ellipse cx="55" cy="18" rx="18" ry="9"/>
+    <rect x="38" y="12" width="34" height="14" rx="3"/>
+    <!-- forehead -->
+    <path d="M28 26 Q30 10 55 8 Q80 10 82 26 L80 50 Q70 44 55 43 Q40 44 30 50 Z"/>
+    <!-- brow ridge strong overhang -->
+    <path d="M25 48 Q38 40 55 39 Q72 40 85 48 L87 56 Q72 50 55 50 Q38 50 23 56 Z"/>
+    <!-- eye sockets deep set -->
+    <ellipse cx="42" cy="60" rx="7" ry="5"/>
+    <ellipse cx="68" cy="60" rx="7" ry="5"/>
+    <!-- nose long prominent -->
+    <path d="M50 66 L45 90 Q50 93 60 93 Q65 90 60 66 Z"/>
+    <!-- lips tight -->
+    <path d="M42 96 Q55 100 68 96 L66 102 Q55 105 44 102 Z"/>
+    <!-- chin jutting -->
+    <path d="M40 103 Q55 110 70 103 L72 118 Q55 125 38 118 Z"/>
+    <!-- neck -->
+    <rect x="42" y="118" width="26" height="20" rx="2"/>
+    <!-- torso broad -->
+    <path d="M22 138 Q30 130 55 128 Q80 130 88 138 L92 230 Q70 238 55 238 Q40 238 18 230 Z"/>
+    <!-- arms suggested -->
+    <path d="M22 145 L8 200 Q12 205 20 200 L28 155 Z"/>
+    <path d="M88 145 L102 200 Q98 205 90 200 L82 155 Z"/>
+    <!-- hands at sides -->
+    <ellipse cx="12" cy="205" rx="8" ry="6"/>
+    <ellipse cx="98" cy="205" rx="8" ry="6"/>
+    <!-- navel / belly button detail -->
+    <ellipse cx="55" cy="185" rx="5" ry="4"/>
+    <!-- ahu platform base -->
+    <rect x="5" y="238" width="100" height="22" rx="3"/>
+    <rect x="0" y="257" width="110" height="14" rx="2"/>
+    <rect x="0" y="268" width="110" height="10" rx="1"/>
+    <rect x="0" y="276" width="110" height="8"/>
+    <rect x="0" y="282" width="110" height="6"/>
+    <rect x="0" y="286" width="110" height="54"/>
+  </svg>
+
+  <!-- RIGHT moai (slightly shorter, different proportion) -->
+  <svg class="moai-silhouette moai-right" viewBox="0 0 95 300" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <!-- no pukao on this one -->
+    <!-- forehead -->
+    <path d="M20 18 Q22 4 47 2 Q72 4 74 18 L73 42 Q63 37 47 36 Q32 37 22 42 Z"/>
+    <!-- brow ridge -->
+    <path d="M18 40 Q31 33 47 32 Q63 33 76 40 L78 48 Q63 43 47 43 Q31 43 17 48 Z"/>
+    <!-- eye sockets -->
+    <ellipse cx="35" cy="53" rx="7" ry="5"/>
+    <ellipse cx="59" cy="53" rx="7" ry="5"/>
+    <!-- nose -->
+    <path d="M43 59 L38 80 Q44 84 52 84 Q58 80 53 59 Z"/>
+    <!-- lips -->
+    <path d="M34 87 Q47 91 60 87 L58 93 Q47 96 36 93 Z"/>
+    <!-- chin -->
+    <path d="M33 94 Q47 100 61 94 L63 107 Q47 114 31 107 Z"/>
+    <!-- neck -->
+    <rect x="36" y="107" width="22" height="18" rx="2"/>
+    <!-- torso -->
+    <path d="M16 125 Q24 118 47 116 Q70 118 78 125 L81 205 Q62 212 47 212 Q32 212 13 205 Z"/>
+    <!-- arms -->
+    <path d="M16 130 L4 178 Q8 183 15 178 L22 138 Z"/>
+    <path d="M78 130 L90 178 Q86 183 79 178 L73 138 Z"/>
+    <!-- hands -->
+    <ellipse cx="7" cy="182" rx="7" ry="5"/>
+    <ellipse cx="87" cy="182" rx="7" ry="5"/>
+    <!-- navel -->
+    <ellipse cx="47" cy="167" rx="4" ry="3"/>
+    <!-- ahu base -->
+    <rect x="3" y="212" width="89" height="18" rx="2"/>
+    <rect x="0" y="228" width="95" height="12" rx="1"/>
+    <rect x="0" y="238" width="95" height="62"/>
+  </svg>
+
+  <!-- BACK center moai (smallest, behind) -->
+  <svg class="moai-silhouette moai-back" viewBox="0 0 80 260" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 14 Q18 2 40 0 Q62 2 64 14 L62 34 Q54 29 40 28 Q26 29 18 34 Z"/>
+    <path d="M14 32 Q26 26 40 25 Q54 26 66 32 L68 39 Q54 34 40 34 Q26 34 12 39 Z"/>
+    <ellipse cx="29" cy="44" rx="6" ry="4"/>
+    <ellipse cx="51" cy="44" rx="6" ry="4"/>
+    <path d="M36 50 L32 67 Q37 70 43 70 Q48 67 44 50 Z"/>
+    <path d="M28 73 Q40 77 52 73 L50 78 Q40 81 30 78 Z"/>
+    <path d="M27 79 Q40 85 53 79 L54 90 Q40 96 26 90 Z"/>
+    <rect x="33" y="90" width="14" height="14" rx="2"/>
+    <path d="M10 104 Q18 98 40 96 Q62 98 70 104 L72 168 Q56 174 40 174 Q24 174 8 168 Z"/>
+    <path d="M10 108 L1 148 Q5 152 11 148 L16 115 Z"/>
+    <path d="M70 108 L79 148 Q75 152 69 148 L64 115 Z"/>
+    <rect x="2" y="174" width="76" height="16" rx="2"/>
+    <rect x="0" y="188" width="80" height="10" rx="1"/>
+    <rect x="0" y="196" width="80" height="64"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="club-badge">✦ Club de Cine · 5° Aniversario ✦</div>
+    <h1>
+      Rapa Nui
+      <span>Isla de Pascua</span>
+    </h1>
+    <p class="hero-subtitle">31 Julio — 4 Agosto · 2026</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Salida</span>
+        <span class="meta-value">Vie 31 Jul · 08:35</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Alojamiento</span>
+        <span class="meta-value">Pont · Hanga Roa</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Regreso</span>
+        <span class="meta-value">Mar 4 Ago · 14:40</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    Explorar
+  </div>
+</section>
+
+<!-- CLIMA -->
+<section class="clima-section">
+  <div class="section-inner">
+    <div class="section-tag">Clima esperado en julio–agosto</div>
+    <div class="clima-grid">
+      <div class="clima-card">
+        <span class="clima-icon">🌡️</span>
+        <div class="clima-card-label">Temperatura</div>
+        <div class="clima-card-value">16°C – 21°C</div>
+        <div class="clima-card-sub">Agradable, invierno suave</div>
+      </div>
+      <div class="clima-card">
+        <span class="clima-icon">🌊</span>
+        <div class="clima-card-label">Mar</div>
+        <div class="clima-card-value">21°C – 22°C</div>
+        <div class="clima-card-sub">Ideal para buceo y snorkel</div>
+      </div>
+      <div class="clima-card">
+        <span class="clima-icon">🌧️</span>
+        <div class="clima-card-label">Lluvias</div>
+        <div class="clima-card-value">~5 días/mes</div>
+        <div class="clima-card-sub">Chaparrones breves</div>
+      </div>
+      <div class="clima-card">
+        <span class="clima-icon">💨</span>
+        <div class="clima-card-label">Viento</div>
+        <div class="clima-card-value">Moderado–Fuerte</div>
+        <div class="clima-card-sub">Rachas frecuentes en julio</div>
+      </div>
+      <div class="clima-card">
+        <span class="clima-icon">🌅</span>
+        <div class="clima-card-label">Amanecer</div>
+        <div class="clima-card-value">~09:06 hrs</div>
+        <div class="clima-card-sub">Sol activo ~10.5 hrs/día</div>
+      </div>
+      <div class="clima-card">
+        <span class="clima-icon">🌇</span>
+        <div class="clima-card-label">Atardecer</div>
+        <div class="clima-card-value">~19:42 hrs</div>
+        <div class="clima-card-sub">Vistas desde Tahai</div>
+      </div>
+    </div>
+    <div class="clima-tip">
+      <strong>¿Qué llevar?</strong> Ropa ligera para el día + una chaqueta cortavientos o impermeable liviano (el tiempo puede cambiar en horas). Calzado cómodo de suela gruesa resistente al agua para los sitios arqueológicos. Protector solar y gorro. En julio el viento puede sorprender: considera una bufanda o pañoleta. La isla tiene clima <em>subtropical subtropical estable</em>, pero en un mismo día puede salir el sol, nublarse y llover brevemente.
+    </div>
+  </div>
+</section>
+
+<!-- NAVIGATION -->
+<nav class="nav-section">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showDay('d0')">✈ Llegada</button>
+    <button class="nav-tab" onclick="showDay('d1')">Día 1 · Sáb 1 Ago</button>
+    <button class="nav-tab" onclick="showDay('d2')">Día 2 · Dom 2 Ago</button>
+    <button class="nav-tab" onclick="showDay('d3')">Día 3 · Lun 3 Ago</button>
+    <button class="nav-tab" onclick="showDay('d4')">✈ Regreso</button>
+    <button class="nav-tab" onclick="showDay('rest')">🍽 Restaurantes</button>
+    <button class="nav-tab" onclick="showDay('tips')">💡 Consejos</button>
+  </div>
+</nav>
+
+<!-- DAY PANELS -->
+<div class="days-container">
+
+  <!-- DÍA 0: LLEGADA -->
+  <div class="day-panel active" id="d0">
+    <div class="day-header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="day-number">0</div>
+        <div class="day-info">
+          <div class="day-date">Viernes 31 de julio · Día de viaje</div>
+          <div class="day-title">Llegada a Rapa Nui</div>
+          <div class="day-subtitle">Vuelo desde Santiago · Check-in · Primeros pasos en la isla</div>
+        </div>
+      </div>
+      <div class="day-sun">
+        <div class="sun-item"><span class="sun-emoji">🌅</span>Amanecer ~09:06</div>
+        <div class="sun-item"><span class="sun-emoji">🌇</span>Atardecer ~19:42</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#8899cc"></div>
+          <div class="tl-time">08:35</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">✈ Despegue desde Santiago (SCL)</div>
+            <span class="tl-tag tag-vuelo">Vuelo</span>
+          </div>
+          <div class="tl-card-desc">Vuelo LATAM desde el Aeropuerto Internacional Arturo Merino Benítez. Vuelo directo de aprox. 5 horas. Recordar que Isla de Pascua tiene <strong>2 horas menos</strong> que Santiago en verano (en julio puede ser la misma zona horaria, verificar).</div>
+          <div class="tl-card-tip">Aprovecha el vuelo para ver documentales o películas de la cultura Rapanui — perfecto para el club de cine.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">~13:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🛬 Llegada · Aeropuerto Mataveri</div>
+            <span class="tl-tag tag-vuelo">Llegada</span>
+          </div>
+          <div class="tl-card-desc">El aeropuerto es pequeño y pintoresco — en el avión te colocan flores y el ambiente ya es festivo. Control de ingreso: necesitarás el permiso CARP (se gestiona online antes del viaje). Requieren alojamiento confirmado.</div>
+          <div class="tl-card-tip">Compra la entrada al Parque Nacional Rapa Nui aquí mismo o en la CONAF en Hanga Roa. Vale $85.000 CLP aprox. y tiene validez de 10 días.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">~14:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🏡 Check-in · Pont Hanga Roa</div>
+            <span class="tl-tag tag-libre">Alojamiento</span>
+          </div>
+          <div class="tl-card-desc">Instalarse, dejar el equipaje y orientarse. El alojamiento está en el corazón de Hanga Roa, a pasos de la caleta y el malecón. Ideal para conocer el pueblo a pie.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">~15:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🚶‍♀️ Caminata por Hanga Roa</div>
+            <span class="tl-tag tag-libre">Exploración</span>
+          </div>
+          <div class="tl-card-desc">Recorre la Calle Atamu Tekena (arteria principal), el mercado de artesanías, la Caleta Hanga Roa y el pequeño cementerio costero con vistas al mar. Buen momento para alquilar motos, autos o bicicletas para los próximos días.</div>
+          <div class="tl-card-tip">Arriendos recomendados: busca opciones en Hanga Roa la tarde de llegada para tener transporte desde el día 1.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">~18:30</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌅 Atardecer en Ahu Tahai</div>
+            <span class="tl-tag tag-vista">No te lo pierdas</span>
+          </div>
+          <div class="tl-card-desc">A 10 min caminando desde el pueblo. El Ahu Tahai es el complejo ceremonial más cercano a Hanga Roa, con tres ahu y el famoso moái con ojos reconstituidos (Ko Te Riku). El atardecer aquí es <strong>el más icónico de la isla</strong>, con los moáis recortados sobre el Pacífico.</div>
+          <div class="tl-card-tip">Llegar a las 18:45 para tomar posición. Llevar algo de abrigo porque el viento de tarde puede ser frío.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#c8a8e0"></div>
+          <div class="tl-time">~20:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🍽 Cena de bienvenida · Kanahau</div>
+            <span class="tl-tag tag-food">Restaurante</span>
+          </div>
+          <div class="tl-card-desc">Kanahau es un restaurante familiar con fusión polinesio-internacional, opciones vegetarianas y algunos días tiene <strong>show cultural en vivo</strong>. Ideal para celebrar el primer día. Pedir: ceviche mixto, patatas Kanahau y los tragos locales.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÍA 1 -->
+  <div class="day-panel" id="d1">
+    <div class="day-header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="day-number">1</div>
+        <div class="day-info">
+          <div class="day-date">Sábado 1 de agosto</div>
+          <div class="day-title">El Amanecer de los Gigantes</div>
+          <div class="day-subtitle">Ahu Tongariki · Rano Raraku · Playa Anakena · Costa Norte</div>
+        </div>
+      </div>
+      <div class="day-sun">
+        <div class="sun-item"><span class="sun-emoji">🌅</span>Amanecer ~09:06</div>
+        <div class="sun-item"><span class="sun-emoji">🌇</span>Atardecer ~19:42</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">07:30</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌅 Amanecer en Ahu Tongariki ⭐</div>
+            <span class="tl-tag tag-vista">Imperdible</span>
+          </div>
+          <div class="tl-card-desc">La imagen más icónica de Rapa Nui: los 15 moáis del ahu más grande de la isla recibiendo la primera luz del sol desde el Océano Pacífico. Salir del alojamiento ~07:00 (son ~20 km desde Hanga Roa). El sitio abre a las 07:00 hrs.</div>
+          <div class="tl-card-tip">El sol sale justo detrás de los moáis — las fotos son mágicas. Llevar café en termo y ropa de abrigo. Es el mejor amanecer de toda la isla.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">09:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🗿 Rano Raraku — La Cantera Sagrada</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">A solo 1 km de Tongariki. La cantera volcánica donde se esculpieron los moáis. Más de 400 estatuas en distintas etapas de construcción, algunas aún emergiendo de la roca viva. Un lugar de misterio profundo. <strong>Solo se puede visitar UNA vez</strong>, así que disfruten con calma.</div>
+          <div class="tl-card-tip">Dentro hay una cafetería con baños y zona de picnic. Dedicar al menos 1.5 horas. No perderse los moáis semi-enterrados en la ladera.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">11:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🪨 Petroglifos y Te Pito Kura</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">Te Pito Kura ("El ombligo del mundo"): una esfera de piedra perfecta rodeada de cuatro piedras, considerada el centro energético de la isla. Cerca se encuentran los petroglifos y el Ahu Te Pito Kura con el moái más grande que llegó a ser erguido (10 metros).</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle sea"></div>
+          <div class="tl-time">13:00</div>
+        </div>
+        <div class="tl-card sea-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🏖 Playa Anakena — Almuerzo y Baño</div>
+            <span class="tl-tag tag-agua">Playa</span>
+          </div>
+          <div class="tl-card-desc">La única playa de arena blanca y aguas turquesa de la isla, a 18 km de Hanga Roa. Hay kioscos con empanadas y snacks. Perfecta para descansar, nadar y hacer snorkel. Junto a la playa está el <strong>Ahu Nau Nau</strong> con 7 moáis en excelente estado, algunos con sus pukao (sombreros rojos).</div>
+          <div class="tl-card-tip">Las palmeras tahitianas crean un ambiente paradisíaco. Para la compañera vegana: las empanadas de acelga y queso o los coctelillos de frutas son opciones seguras.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">15:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🗿 Ahu Nau Nau y Costa Norte</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">Desde Anakena, explorar la costa norte: acantilados, bahías escondidas y ahus menores. Paisajes volcánicos que recuerdan que la isla es en esencia tres volcanes fundidos. El viento y las olas aquí son imponentes.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">19:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌇 Atardecer en Tahai o Ahu Akivi</div>
+            <span class="tl-tag tag-vista">Atardecer</span>
+          </div>
+          <div class="tl-card-desc">De regreso a Hanga Roa, el Ahu Akivi tiene los únicos 7 moáis que miran hacia el mar (en lugar de dar la espalda). Si hay energía, pasar por ahí antes del atardecer. Terminar en Tahai para ver el sol caer en el Pacífico.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#c8a8e0"></div>
+          <div class="tl-time">20:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🍽 Cena · La Kaleta</div>
+            <span class="tl-tag tag-food">Vista al mar</span>
+          </div>
+          <div class="tl-card-desc">Restaurante en la orilla del mar, en Caleta Hanga Roa. Menú en pizarra con lo fresco del día. Vista espectacular al océano. Imperdible el pisco sour y los mariscos. Consultar opciones vegetarianas al chef, que suele adaptarse.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÍA 2 -->
+  <div class="day-panel" id="d2">
+    <div class="day-header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="day-number">2</div>
+        <div class="day-info">
+          <div class="day-date">Domingo 2 de agosto</div>
+          <div class="day-title">Volcanes, Buceo y Ceremonia</div>
+          <div class="day-subtitle">Rano Kau · Orongo · Buceo/Snorkel · Noche cultural</div>
+        </div>
+      </div>
+      <div class="day-sun">
+        <div class="sun-item"><span class="sun-emoji">🌅</span>Amanecer ~09:06</div>
+        <div class="sun-item"><span class="sun-emoji">🌇</span>Atardecer ~19:44</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle moss"></div>
+          <div class="tl-time">08:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌋 Trekking Volcán Rano Kau</div>
+            <span class="tl-tag tag-trek">Senderismo</span>
+          </div>
+          <div class="tl-card-desc">El volcán más espectacular de la isla. Un cráter de 1,6 km de diámetro que alberga una laguna de agua dulce cubierta de totora flotante. Desde el borde, la vista al océano y a los tres islotes Motu es abrumadora. La subida es moderada desde Hanga Roa (~3 km).</div>
+          <div class="tl-card-tip">Ir temprano antes que lleguen tours. El viento en el borde puede ser muy fuerte — sujetarse bien y no acercarse demasiado al filo.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">10:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🏛 Aldea Ceremonial de Orongo ⭐</div>
+            <span class="tl-tag tag-arq">Imperdible</span>
+          </div>
+          <div class="tl-card-desc">En el borde del Rano Kau, Orongo fue el centro del culto al Tangata Manu (Hombre Pájaro). Casas de piedra superpuestas sobre el acantilado, petroglifos sagrados con el dios Make Make, y una de las vistas más dramáticas de toda la Polinesia. <strong>Solo se puede visitar una vez con el pase.</strong></div>
+          <div class="tl-card-tip">Dedicar mínimo 1 hora. El contexto arqueológico y mitológico es fascinante — perfecta parada para el club de cine amante de las historias.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">12:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🪨 Ahu Vinapu — Misterio Inca</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">Bajando del Rano Kau, cerca del aeropuerto. Este ahu tiene muros de piedra tallada con una perfección similar a la arquitectura inca, lo que ha generado teorías sobre contactos precolombinos. Los moáis fueron derribados pero el muro impresiona.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle sea"></div>
+          <div class="tl-time">14:00</div>
+        </div>
+        <div class="tl-card sea-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🤿 Buceo o Snorkel en los Motu</div>
+            <span class="tl-tag tag-agua">Actividad acuática</span>
+          </div>
+          <div class="tl-card-desc">El mejor buceo de la isla está en la bahía de Hanga Roa y los islotes Motu Nui, Motu Iti y Motu Kau Kau al suroeste. Visibilidad excepcional (25–30 m), tortugas marinas, rayas y formaciones volcánicas submarinas únicas. Temperatura del mar ~21°C. Empresas recomendadas: <strong>Orca Dive Center</strong> o <strong>Mike Rapu Diving</strong>.</div>
+          <div class="tl-card-tip">Para snorkel sin bote: Playa Pea y Poko Poko son piscinas naturales donde suelen aparecer tortugas. Para no buceadoras, el snorkel desde la orilla es fantástico.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">17:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">☕ Tarde libre en Hanga Roa</div>
+            <span class="tl-tag tag-libre">Descanso</span>
+          </div>
+          <div class="tl-card-desc">Explorar el Museo Antropológico Sebastian Englert, la artesanía local (madera de tōtora, réplicas de moáis en obsidiana), o simplemente tomar un café y ver el mar en alguna terraza de la Avenida Policarpo Toro.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">19:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌇 Atardecer + Cena con Show Cultural ⭐</div>
+            <span class="tl-tag tag-vista">Aniversario</span>
+          </div>
+          <div class="tl-card-desc">¡Noche especial para el 5° aniversario del club! Cena en <strong>Kanahau</strong> o el restaurant del Hotel Hangaroa con show de danza Rapanui (haka, ori tahiti, canciones tradicionales). Es una experiencia emocionante: los danzantes con tatuajes y trajes tradicionales, el fuego y la percusión son mágicos.</div>
+          <div class="tl-card-tip">Reservar con anticipación — los shows culturales se llenan rápido, especialmente en temporada de invierno.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÍA 3 -->
+  <div class="day-panel" id="d3">
+    <div class="day-header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="day-number">3</div>
+        <div class="day-info">
+          <div class="day-date">Lunes 3 de agosto</div>
+          <div class="day-title">Cumbres, Astros y Despedida</div>
+          <div class="day-subtitle">Mauga Terevaka · Puna Pau · Stargazing · Última noche</div>
+        </div>
+      </div>
+      <div class="day-sun">
+        <div class="sun-item"><span class="sun-emoji">🌅</span>Amanecer ~09:06</div>
+        <div class="sun-item"><span class="sun-emoji">🌇</span>Atardecer ~19:46</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle moss"></div>
+          <div class="tl-time">08:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🏔 Trekking Mauga Terevaka — Cima de la Isla</div>
+            <span class="tl-tag tag-trek">Senderismo</span>
+          </div>
+          <div class="tl-card-desc">El punto más alto de la isla (507 msnm). Caminata moderada de ~2 horas desde el sector de Ahu Akivi. Desde la cima se ve la isla completa rodeada de océano en todas direcciones y, con buen tiempo, incluso los volcanes en la distancia. Sensación de estar en el fin del mundo.</div>
+          <div class="tl-card-tip">Llevar agua, snacks, capa de viento y calzado de trekking. No hay señal celular. Salir temprano para aprovechar la luz de la mañana.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">11:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🔴 Puna Pau — Cantera de los Pukao</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">Pequeño volcán rojizo de donde se extraía la escoria volcánica roja para fabricar los topknots (sombreros) de los moáis. Hay varios pukao dispersos en la ladera, como si hubieran rodado para siempre. Pintoresco y poco visitado.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">12:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🗿 Ahu Akivi — Los Siete Exploradores</div>
+            <span class="tl-tag tag-arq">Arqueología</span>
+          </div>
+          <div class="tl-card-desc">Los únicos 7 moáis que miran al océano, representando los exploradores que según la tradición llegaron primero a la isla. Ubicado en el interior, rodeado de pastizales — una estampa más aislada y contemplativa que la costa.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle sea"></div>
+          <div class="tl-time">14:00</div>
+        </div>
+        <div class="tl-card sea-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🐢 Snorkel en Playa Pea / Poko Poko</div>
+            <span class="tl-tag tag-agua">Opcional</span>
+          </div>
+          <div class="tl-card-desc">Para quienes quieran un último contacto con el mar. Poko Poko es una piscina natural en la costa sur de Hanga Roa donde con frecuencia se avistan tortugas marinas. No se necesita equipo avanzado, el snorkel desde la orilla es excelente.</div>
+          <div class="tl-card-tip">Alternativa: visitar la Cueva Ana Te Pahu, un tubo de lava volcánica con jardines subterráneos de helechos y raíces, cerca de Ahu Akivi.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">17:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🛍 Artesanías y Recuerdos</div>
+            <span class="tl-tag tag-libre">Compras</span>
+          </div>
+          <div class="tl-card-desc">Último paseo por el mercado artesanal de Hanga Roa. Buscar réplicas de moáis talladas a mano en madera de tōtora, piezas en obsidiana volcánica negra, tejidos y collares con el diseño del dios Make Make. Regatear amigablemente.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">19:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌅 Último Atardecer en Tahai</div>
+            <span class="tl-tag tag-vista">Despedida</span>
+          </div>
+          <div class="tl-card-desc">Volver al Ahu Tahai para un último atardecer. Esta vez con más calma, con la isla ya en el corazón. Los moáis con el sol hundiéndose en el Pacífico son una imagen que no se olvida jamás.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">21:00</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🌟 Cielo Estrellado — Stargazing ⭐</div>
+            <span class="tl-tag tag-vista">Magia nocturna</span>
+          </div>
+          <div class="tl-card-desc">Isla de Pascua es uno de los mejores lugares del mundo para observar el cielo nocturno. Sin contaminación lumínica, a 3.700 km de la costa más cercana, la Vía Láctea se ve con una claridad que pocas personas experimentan en su vida. Salir al Ahu Tongariki o al campo abierto cerca del aeropuerto. En julio/agosto hay buena visibilidad.</div>
+          <div class="tl-card-tip">Buscar tour de astronomía con telescopio en Hanga Roa — algunos hoteles y guías ofrecen estas salidas nocturnas.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#c8a8e0"></div>
+          <div class="tl-time">21:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🍽 Cena de cierre · Te Moana</div>
+            <span class="tl-tag tag-food">Restaurante</span>
+          </div>
+          <div class="tl-card-desc">Cena de cierre del 5° aniversario en Te Moana, reconocido por su cocina local de calidad, ambiente acogedor y buenas opciones vegetarianas. Brindis con pisco sour por el Club de Cine y por Rapa Nui.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DÍA 4: REGRESO -->
+  <div class="day-panel" id="d4">
+    <div class="day-header">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="day-number">4</div>
+        <div class="day-info">
+          <div class="day-date">Martes 4 de agosto · Día de regreso</div>
+          <div class="day-title">Última Mañana en Rapa Nui</div>
+          <div class="day-subtitle">Check-out · Mañana libre · Vuelo a Santiago</div>
+        </div>
+      </div>
+      <div class="day-sun">
+        <div class="sun-item"><span class="sun-emoji">🌅</span>Amanecer ~09:06</div>
+        <div class="sun-item"><span class="sun-emoji">✈</span>Vuelo 14:40</div>
+      </div>
+    </div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">08:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">☕ Desayuno tranquilo</div>
+            <span class="tl-tag tag-libre">Mañana libre</span>
+          </div>
+          <div class="tl-card-desc">Desayuno en el alojamiento o en algún café del pueblo. Descanso, fotografías finales, empacar recuerdos. Disfrutar de los últimos momentos sin apuro.</div>
+          <div class="tl-card-tip">Hora de check-out típica: 11:00. Preguntar si pueden guardar el equipaje hasta la tarde.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle moss"></div>
+          <div class="tl-time">09:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🚶‍♀️ Última caminata costera</div>
+            <span class="tl-tag tag-trek">Opcional</span>
+          </div>
+          <div class="tl-card-desc">Caminata corta por el malecón de Hanga Roa hasta Tahai: ~30 min de ida. Ver los moáis de día completo por última vez y despedirse del Pacífico desde los acantilados. La luz de la mañana sobre el océano es diferente y hermosa.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle"></div>
+          <div class="tl-time">11:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🛍 Compras de último minuto</div>
+            <span class="tl-tag tag-libre">Compras</span>
+          </div>
+          <div class="tl-card-desc">Si quedaron cosas pendientes en el mercado artesanal, este es el momento. También es buena idea comprar pisco local, mermeladas o miel de la isla para llevar a Santiago.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#c8a8e0"></div>
+          <div class="tl-time">12:30</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🍽 Almuerzo rápido · Donde la Tia Berta</div>
+            <span class="tl-tag tag-food">Almuerzo</span>
+          </div>
+          <div class="tl-card-desc">Almuerzo rápido antes del aeropuerto. Donde la Tia Berta o algún local del pueblo para un último ceviche de atún o empanadas rapanui. Comer ligero para el vuelo.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle" style="border-color:#8899cc"></div>
+          <div class="tl-time">13:00</div>
+        </div>
+        <div class="tl-card">
+          <div class="tl-card-header">
+            <div class="tl-card-title">🏁 Aeropuerto Mataveri · Check-in</div>
+            <span class="tl-tag tag-vuelo">Regreso</span>
+          </div>
+          <div class="tl-card-desc">El aeropuerto es pequeño, a 5 min del pueblo. Llegar con tiempo para el check-in y controles. El vuelo de regreso sale a las 14:40 hrs.</div>
+          <div class="tl-card-tip">Guardar algunos CLP para tasa de aeropuerto si aplica. No olvidar devolver los autos o motos alquilados antes de ir al aeropuerto.</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">
+          <div class="tl-dot-circle gold"></div>
+          <div class="tl-time">14:40</div>
+        </div>
+        <div class="tl-card highlight">
+          <div class="tl-card-header">
+            <div class="tl-card-title">✈ Despegue · Rumbo a Santiago</div>
+            <span class="tl-tag tag-vuelo">Regreso</span>
+          </div>
+          <div class="tl-card-desc">Rapa Nui queda atrás, pero no en los corazones. El vuelo de regreso dura ~5 horas. Mirando por la ventana los últimos minutos se ven los tres volcanes de la isla desde el aire — una despedida perfecta. <strong>¡Feliz 5° aniversario, Club de Cine!</strong> 🎬🗿</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- RESTAURANTES -->
+  <div class="day-panel" id="rest">
+    <div class="day-header">
+      <div class="day-info">
+        <div class="day-date">Guía gastronómica</div>
+        <div class="day-title">Dónde Comer en Hanga Roa</div>
+        <div class="day-subtitle">Con opciones para nuestra compañera vegana 🌱</div>
+      </div>
+    </div>
+
+    <div style="background:rgba(90,122,82,0.1);border:1px solid rgba(90,122,82,0.3);border-radius:8px;padding:1rem 1.2rem;margin-bottom:2rem;font-size:0.82rem;color:var(--sand);line-height:1.6;">
+      🌱 <strong>Nota para viajeras veganas:</strong> La gastronomía de la isla es principalmente a base de pescado fresco. Sin embargo, varios restaurantes tienen opciones vegetarianas y algunos ofrecen platos adaptables. Se indica en cada restaurante qué opciones veganas buscar. Siempre conviene preguntar al mesero antes de pedir.
+    </div>
+
+    <div class="rest-grid">
+
+      <div class="rest-card vegan-friendly">
+        <div class="rest-name">Kanahau</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-vegan">🌱 Vegano OK</span>
+          <span class="rest-tag rt-show">Show cultural</span>
+          <span class="rest-tag rt-precio">$$</span>
+        </div>
+        <div class="rest-desc">Restaurant familiar con 20+ años. Fusión polinesio-internacional. Excelente ceviche mixto, patatas Kanahau y tragos artesanales. Algunos días hay música en vivo y show de danza Rapanui. Muy recomendado para el aniversario.</div>
+        <div class="rest-vegan-note">Opciones veganas: ensaladas, wok de vegetales, curry de verduras. Preguntar por plato del día plant-based. El personal es amable con solicitudes especiales.</div>
+      </div>
+
+      <div class="rest-card">
+        <div class="rest-name">La Kaleta</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-vista">🌊 Vista al mar</span>
+          <span class="rest-tag rt-precio">$$-$$$</span>
+        </div>
+        <div class="rest-desc">Restaurante en la orilla del mar, en la caleta. Menú escrito en pizarra con lo fresco del día. El pisco sour con vista al Pacífico es imbatible. Buena para cenar viendo las olas romper. Ambiente relajado y auténtico.</div>
+        <div class="rest-vegan-note">Opciones limitadas — pedir ensalada del mar sin proteína animal, pasta de verduras si hay en carta. Consultar directamente, suelen adaptarse.</div>
+      </div>
+
+      <div class="rest-card vegan-friendly">
+        <div class="rest-name">Te Moana</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-vegan">🌱 Vegano OK</span>
+          <span class="rest-tag rt-precio">$$</span>
+        </div>
+        <div class="rest-desc">Restaurante local bien valorado con cocina de autor rapanui. Ambiente acogedor, buena relación precio-calidad, carta variada. Ideal para una cena de grupo. Ubicado en la Calle Policarpo Toro.</div>
+        <div class="rest-vegan-note">Conocido por tener opciones vegetarianas y adaptarse a requerimientos veganos. Preguntar por el plato de verduras del día y ensaladas.</div>
+      </div>
+
+      <div class="rest-card vegan-friendly">
+        <div class="rest-name">Sushi Rapa Nui</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-sushi">🍣 Sushi</span>
+          <span class="rest-tag rt-vegan">🌱 Vegano OK</span>
+          <span class="rest-tag rt-precio">$$</span>
+        </div>
+        <div class="rest-desc">Sorprendente y delicioso sushi con ingredientes locales. Excelente presentación y atención. Una rareza encantadora en el Pacífico. Reseñas que destacan las opciones veganas disponibles y la buena disposición del equipo.</div>
+        <div class="rest-vegan-note">Rolls vegetarianos, nigiri de pepino y aguacate, edamame. Especialmente amigable para veganas según reseñas recientes.</div>
+      </div>
+
+      <div class="rest-card">
+        <div class="rest-name">Donde la Tía Berta</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-precio">$ Económico</span>
+        </div>
+        <div class="rest-desc">El lugar más auténtico y económico de la isla. Comida casera Rapanui, empanadas de atún, ceviche local. Frecuentado por locales. Sin lujos pero con mucho sabor. Ideal para almuerzos.</div>
+        <div class="rest-vegan-note">Opciones limitadas — empanada de queso o verduras, ensalada. Mejor para almuerzo rápido que para cena especial de la compañera vegana.</div>
+      </div>
+
+      <div class="rest-card vegan-friendly">
+        <div class="rest-name">Restaurant del Hotel Hangaroa</div>
+        <div class="rest-tags">
+          <span class="rest-tag rt-vista">🌊 Vista</span>
+          <span class="rest-tag rt-show">Experiencia</span>
+          <span class="rest-tag rt-precio">$$$</span>
+        </div>
+        <div class="rest-desc">Restaurante de nivel superior con una propuesta gastronómica elaborada y vista espectacular. Para la noche del aniversario o una ocasión especial. Ofrecen shows culturales organizados con danza Rapanui.</div>
+        <div class="rest-vegan-note">Menú de alta cocina con opciones adaptables. Al ser de categoría superior tienen mayor disposición para crear platos plant-based a pedido. Reservar con anticipación e indicar requerimiento vegano.</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;background:rgba(212,168,83,0.07);border:1px solid rgba(212,168,83,0.2);border-radius:8px;padding:1.2rem;font-size:0.8rem;color:var(--sand);line-height:1.7;">
+      <strong style="color:var(--gold);">💡 Tips gastronómicos generales</strong><br>
+      • Los restaurantes en Rapa Nui abren y cierran frecuentemente — confirmar antes de ir.<br>
+      • El precio de los alimentos es <strong>considerablemente mayor</strong> que en Santiago (todo se importa por avión o barco).<br>
+      • El plato estrella de la isla es el <strong>atún fresco</strong> en todas sus formas: ceviche, tiradito, tataki.<br>
+      • El cóctel local es el <strong>pisco sour rapanui</strong> con maracuyá. Imperdible.<br>
+      • Muchos restaurantes no tienen carta fija — van a la pizarra del día según la pesca.
+    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="day-panel" id="tips">
+    <div class="day-header">
+      <div class="day-info">
+        <div class="day-date">Información práctica</div>
+        <div class="day-title">Consejos Esenciales</div>
+        <div class="day-subtitle">Todo lo que necesitas saber antes y durante el viaje</div>
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <span class="tip-icon">📋</span>
+        <div class="tip-title">Permiso CARP</div>
+        <div class="tip-text">Obligatorio para ingresar a Rapa Nui. Trámite gratuito online en el sitio de la Municipalidad de Isla de Pascua. Hacerlo con anticipación. Requiere alojamiento confirmado y fecha de regreso.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🎫</span>
+        <div class="tip-title">Parque Nacional</div>
+        <div class="tip-text">Entrada ~$85.000 CLP (extranjeros) o ~$35.000 CLP (chilenos). Válida 10 días. Incluye todos los sitios arqueológicos. Rano Raraku y Orongo solo se visitan una vez cada uno.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🚗</span>
+        <div class="tip-title">Transporte</div>
+        <div class="tip-text">La isla tiene ~24 km de largo. Lo ideal: arriendo de auto (4x4 recomendado), moto o cuadriciclo. No hay transporte público. Taxi disponible pero caro. Bicicleta solo si hay buena condición física.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">💰</span>
+        <div class="tip-title">Dinero</div>
+        <div class="tip-text">Pesos chilenos y tarjetas de crédito. Hay cajeros automáticos en Hanga Roa pero pueden quedarse sin dinero — llevar efectivo desde Santiago. Todo es más caro que el continente.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">📶</span>
+        <div class="tip-title">Conectividad</div>
+        <div class="tip-text">Señal de celular solo en Hanga Roa. WiFi en la mayoría de los alojamientos. En sitios arqueológicos alejados no hay señal — descargar mapas offline antes de salir.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🌿</span>
+        <div class="tip-title">Respeto a la isla</div>
+        <div class="tip-text">NUNCA tocar los moáis. No llevar tierra, rocas o arena fuera de la isla (es ilegal). No salirse de los caminos señalizados en los sitios arqueológicos. La isla es sagrada.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">👗</span>
+        <div class="tip-title">Qué llevar</div>
+        <div class="tip-text">Ropa cómoda y ligera + chaqueta cortavientos, impermeable liviano, calzado de suela gruesa impermeable, protector solar, gorro para el sol y el viento, repelente.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🤿</span>
+        <div class="tip-title">Buceo</div>
+        <div class="tip-text">Orca Dive Center y Mike Rapu Diving son las escuelas más recomendadas. Reservar con anticipación. Temperatura del mar ~21°C en agosto. Visibilidad excepcional de 25-30m.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🌟</span>
+        <div class="tip-title">Stargazing</div>
+        <div class="tip-text">Una de las mejores zonas del mundo para cielo nocturno. Buscar tour de astronomía en Hanga Roa (operan desde ~21:00). Salir del pueblo para reducir luz artificial. La Vía Láctea es visible a simple vista.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🎬</span>
+        <div class="tip-title">Para el Club de Cine</div>
+        <div class="tip-text">Ver antes del viaje: "Rapa Nui" (1994, Kevin Reynolds), documental "El ombligo del mundo". Rapa Nui también aparece en "Moana" (inspiración polinesia). Una isla hecha para contar historias.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🏥</span>
+        <div class="tip-title">Salud</div>
+        <div class="tip-text">Hay un Hospital Hanga Roa con atención básica. Llevar botiquín personal, medicamentos habituales, antialérgicos y repelente. El sol y el viento pueden ser intensos incluso en invierno.</div>
+      </div>
+      <div class="tip-card">
+        <span class="tip-icon">🌅</span>
+        <div class="tip-title">Amanecer en Tongariki</div>
+        <div class="tip-text">Salir a las 07:00 desde Hanga Roa. El sitio abre justo al amanecer. Llevar termo con café caliente, abrigo extra y trípode si hay cámaras fotográficas. Las fotos con el sol detrás de los moáis son las más icónicas de la isla.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>🗿 Rapa Nui · Club de Cine · 5° Aniversario · 31 Jul – 4 Ago 2026 · ✦ Que la isla los inspire ✦</p>
+</footer>
+
+<script>
+function showDay(id) {
+  document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+
+  document.getElementById(id).classList.add('active');
+
+  const tabs = document.querySelectorAll('.nav-tab');
+  const map = { d0:0, d1:1, d2:2, d3:3, d4:4, rest:5, tips:6 };
+  tabs[map[id]].classList.add('active');
+
+  // Scroll to nav
+  document.querySelector('.nav-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+</body>
+</html>
